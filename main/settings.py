@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 from pathlib import Path
 import os
+=======
+
+from pathlib import Path
+>>>>>>> origin/main
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,7 +14,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = 'django-insecure-5!$emg1v^%#k6#zgs#apv7d*9qw$a((y=nj8yl!s@ax!c83mgw'
+=======
+SECRET_KEY = 'django-insecure-8ekqq+^9j$$)(02wqja19=s)iu(jw7-p185#b@)hi8134h-u(2'
+>>>>>>> origin/main
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,7 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'myShop',
+=======
+    'cars_of_facts',
+>>>>>>> origin/main
 ]
 
 MIDDLEWARE = [
@@ -44,7 +57,11 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [BASE_DIR / "templates"],
+=======
+        'DIRS': [],
+>>>>>>> origin/main
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,10 +109,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
+<<<<<<< HEAD
 
 LANGUAGE_CODE = "ru-Ru"
 
 TIME_ZONE = "Asia/Bishkek"
+=======
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+>>>>>>> origin/main
 
 USE_I18N = True
 
@@ -106,6 +129,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< HEAD
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+=======
+>>>>>>> origin/main
