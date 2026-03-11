@@ -1,0 +1,10 @@
+<hl>Все продукты <hl>
+<ui>
+    {% for product in products %}
+    <li>
+        {{product.name}} -
+{{product.price}} СОМ (Категории:
+{{product.category.name}})
+    </li>
+  {% endfor %}
+</ui>
