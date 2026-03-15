@@ -11,8 +11,7 @@ def driver_create(req):
         form = DriverForm(req.POST, req.FILES)
         if form.is_valid():
             form.save()
-            return 
-        redirect('driver_list')
+            return redirect('driver_list')
 
     else:
         form = DriverForm()
