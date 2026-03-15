@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'cars_of_facts',
     'myShop',
     'tourism',
+    'drivers',
 
 ]
 
