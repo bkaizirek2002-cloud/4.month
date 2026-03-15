@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'myShop',
     'tourism',
     'drivers',
+    'vacancies',
+    'captcha',
 
 ]
 
