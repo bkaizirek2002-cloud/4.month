@@ -1,0 +1,43 @@
+<body>
+    <h1>Список всех автомобилей</h1>
+
+    <form action="" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="search" placeholder="Поиск машин..." value="{{ search_query }}">
+        <button type="submit">Найти</button>
+    </form>
+
+    {% for car in page_obj %}
+        <div style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+            <h3>{{ car.title }}</h3>
+            
+            {% if car.image %}
+                <img src="{{ car.image.url }}" width="200" alt="{{ car.title }}">
+            {% else %}
+                <p>Изображение отсутствует</p>
+            {% endif %}
+
+            <p><strong>Цена:</strong> {{ car.price }} $</p>
+            <p><strong>Просмотры:</strong> {{ car.views_count }}</p> <a href="{% url 'car_detail_url' car.id %}">Подробнее</a>
+        </div>
+    {% empty %}
+        <p>В базе данных пока нет автомобилей.</p>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}">&laquo; первая</a>
+                <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">назад</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">вперед</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}">последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>

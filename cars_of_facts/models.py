@@ -12,6 +12,7 @@ class Car(models.Model):
     is_electric = models.BooleanField(default=False)
     create_at = models.DateTimeField(auto_now=True)
     brand = models.CharField(max_length=50, default="Unknown")
+    views_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title
