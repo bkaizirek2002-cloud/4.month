@@ -42,6 +42,13 @@ class UpdateOrderView(generic.UpdateView):
     def form_valid(self, form):
         print(form.cleaned_data)
         return super(UpdateOrderView, self).form_valid(form=form)
+    
+#delete - есть два способа с confirm используете именно DeleteView в generic
+class DeleteOrderView(generic.View):
+    def get(self, request, id):
+        order_id = get_object_or_404(OrderBook, id=id)
+        order_id.delete()
+        return redirect('/order_list/')
 
 
 
