@@ -1,5 +1,12 @@
 asgiref==3.11.1
+<<<<<<< HEAD
 Django==6.0.2
 pillow==12.1.1
 python-dotenv==1.2.2
+=======
+Django==6.0.3
+django-ranged-response==0.2.0
+django-simple-captcha==0.6.3
+pillow==12.1.1
+>>>>>>> 27dbb832712eec2d0416cb8d294dcf07ba93b67a
 sqlparse==0.5.5

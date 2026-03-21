@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+=======
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+
+>>>>>>> 27dbb832712eec2d0416cb8d294dcf07ba93b67a
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -8,15 +17,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
+<<<<<<< HEAD
 load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+=======
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-w6hik(^##*!zbf2uj4t)_s0j%wo6k-p40asqy%itgs8joyw@&d'
+>>>>>>> 27dbb832712eec2d0416cb8d294dcf07ba93b67a
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 27dbb832712eec2d0416cb8d294dcf07ba93b67a
 # Application definition
 
 INSTALLED_APPS = [
@@ -26,11 +44,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'blog_app',
     'books',
     'tovars',
     'orders',
     'user',
+=======
+    'cars_of_facts',
+    'myShop',
+    'tourism',
+    'drivers',
+    'vacancies',
+    'captcha',
+>>>>>>> 27dbb832712eec2d0416cb8d294dcf07ba93b67a
 
 ]
 
@@ -112,4 +139,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27dbb832712eec2d0416cb8d294dcf07ba93b67a

@@ -1,0 +1,21 @@
+<h2>Список водителей</h2>
+<a href="{% url' driver_create' %}">Добавить нового водителя</a>
+
+<table border="1">
+    <tr>
+        <th>ФИО</th>
+        <th>Машина</th>
+        <th>Действия</th>
+    </tr>
+    {% for driver in drivers %}
+    <tr>
+        <td>{{ driver.full_name }}</td>
+        <td>{{ driver.get_car_choice_display }}</td>
+        <td>
+            <a href="{% url 'driver_update' driver.pk %}">Изменить</a>
+            
+            <a href="{% url 'driver_delete' driver.pk %}" style="color: red;">Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

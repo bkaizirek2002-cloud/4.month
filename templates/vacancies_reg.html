@@ -1,0 +1,7 @@
+<h2>Регистрация IT специалиста</h2>
+<form method="POST" enctype="multipart/ form-data"></form>
+    {% carf_token %}
+    {{ form.as_p }}
+    <p>{{ form.captcha }}</p>
+    <button type="submit">Отправить анкету</button>
+</form>
