@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Каталог фильмов</h1>
+
+<!-- Форма поиска -->
+<form method="get" class="mb-4">
+  <div class="input-group">
+    <input type="text" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Поиск по названию...">
+    <select name="genre" class="form-select">
+      <option value="">Все жанры</option>
+      {% for genre in genres %}
+        <option value="{{ genre.id }}" {% if request.GET.genre == genre.id|stringformat:"s" %}selected{% endif %}>
+          {{ genre.name }}
+        </option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">Найти</button>
+  </div>
+</form>
+
+<!-- Кнопки действий -->
+{% if user.is_authenticated %}
+  <a href="{% url 'movie_create' %}" class="btn btn-success mb-3">Добавить фильм</a>
+{% endif %}
+
+<!-- Список фильмов -->
+<div class="row">
+  {% for movie in object_list %}
+  <div class="col-md-4 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <p class="card-text">
+          <strong>Жанр:</strong> {{ movie.genre.name }}<br>
+          <strong>Дата выхода:</strong> {{ movie.release_date|date:"d.m.Y" }}<br>
+          <strong>Рейтинг:</strong> {{ movie.rating }}<br>
+          <strong>Теги:</strong> {% for tag in movie.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+        </p>
+        <a href="{% url 'movie_detail' movie.pk %}" class="btn btn-outline-primary">Подробнее</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'movie_update' movie.pk %}" class="btn btn-outline-secondary">Изменить</a>
+          <a href="{% url 'movie_delete' movie.pk %}" class="btn btn-outline-danger">Удалить</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>Фильмы не найдены.</p>
+  {% endfor %}
+</div>
+{% endblock %}

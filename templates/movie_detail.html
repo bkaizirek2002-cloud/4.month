@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card mb-4">
+  <div class="card-body">
+    <h1>{{ object.title }}</h1>
+    <p><strong>Жанр:</strong> {{ object.genre.name }}</p>
+    <p><strong>Дата выхода:</strong> {{ object.release_date|date:"d.m.Y" }}</p>
+    <p><strong>Рейтинг:</strong> {{ object.rating }}</p>
+    <p><strong>Теги:</strong>
+      {% for tag in object.tags.all %}
+        <span class="badge bg-secondary">{{ tag.name }}</span>
+      {% endfor %}
+    </p>
+    <p>{{ object.description }}</p>
+  </div>
+</div>
+
+<!-- Комментарии -->
+<h3>Комментарии ({{ object.comments.count }})</h3>
+
+{% for comment in object.comments.all %}
+  <div class="card mb-2">
+    <div class="card-body">
+      <p class="card-text">{{ comment.text }}</p>
+      <small class="text-muted">Автор: {{ comment.author.username }} | {{ comment.created_at|date:"d.m.Y H:i" }}</small>
+    </div>
+  </div>
+{% empty %}
+  <p>Пока нет комментариев.</p>
+{% endfor %}
+
+<!-- Добавление комментария -->
+{% if user.is_authenticated %}
+  <h4>Добавить комментарий</h4>
+  <form method="post" action="{% url 'add_comment' object.pk %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      {{ comment_form.text }}
+      {% if comment_form.text.errors %}
+        <div class="text-danger">{{ comment_form.text.errors }}</div>
+      {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+  </form>
+{% else %}
+  <p><a href="{% url 'login' %}?next={{ request.path }}">Войдите</a>, чтобы оставить комментарий.</p>
+{% endif %}
+
+<a href="{% url 'movie_list' %}" class="btn btn-secondary mt-3">Назад к списку</a>
+{% endblock %}
